@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@300;400;500;600;700;800;900&family=Bebas+Neue&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #CC0000;
+  --primary-dark: #990000;
+  --primary-light: #FF3333;
+  --gold: #F59E0B;
+  --gold-light: #FACC15;
+  --dark-900: #0a0a0a;
+  --dark-800: #111111;
+  --dark-700: #1a1a1a;
+  --dark-600: #222222;
+  --white: #ffffff;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-500: #6b7280;
+  --gray-700: #374151;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Source Sans 3', 'Noto Sans Tamil', sans-serif;
+  background-color: #f3f4f6;
+  color: #1a1a1a;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tamil text optimization */
+.tamil-text {
+  font-family: 'Noto Sans Tamil', sans-serif;
+  line-height: 1.8;
+}
+
+/* Breaking news ticker */
+.ticker-wrapper {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-content {
+  display: inline-block;
+  animation: ticker 40s linear infinite;
+}
+
+.ticker-content:hover {
+  animation-play-state: paused;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Card hover effects */
+.news-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Image zoom on hover */
+.img-zoom {
+  overflow: hidden;
+}
+
+.img-zoom img {
+  transition: transform 0.5s ease;
+}
+
+.img-zoom:hover img {
+  transform: scale(1.07);
+}
+
+/* Category badge */
+.cat-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-family: 'Noto Sans Tamil', sans-serif;
+}
+
+/* Red gradient overlay */
+.red-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+}
+
+/* ============================================
+   ADVERTISEMENT SLOTS - FIXED (NO FLOATING)
+   ============================================ */
+
+/* Base ad slot - static, never floats */
+.ad-slot {
+  background: #f8f9fa;
+  border: 2px dashed #dee2e6;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #9ca3af;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  cursor: default;
+  position: static;
+  overflow: hidden;
+  float: none;
+  clear: both;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  /* No transform, no animation - prevents floating */
+}
+
+/* No hover movement */
+.ad-slot:hover {
+  border-color: #dee2e6;
+  color: #9ca3af;
+  transform: none;
+}
+
+/* Ad container wrapper - always block level, never floats */
+.ad-container {
+  display: block;
+  position: static;
+  float: none;
+  clear: both;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Header/top ad bar - full width, inline block */
+.ad-bar {
+  display: block;
+  position: static;
+  float: none;
+  width: 100%;
+  background: #fff;
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: center;
+  clear: both;
+}
+
+/* Sidebar ad - normal flow, NO sticky/fixed/absolute */
+.ad-sidebar {
+  display: block;
+  position: static;
+  float: none;
+  width: 100%;
+  clear: both;
+  margin-bottom: 16px;
+}
+
+/* Inline ad between articles */
+.ad-inline {
+  display: block;
+  position: static;
+  float: none;
+  width: 100%;
+  clear: both;
+  margin: 24px 0;
+  text-align: center;
+}
+
+/* Mobile: hide leaderboard, show mobile banner */
+@media (max-width: 640px) {
+  .ad-leaderboard {
+    display: none;
+  }
+  .ad-mobile-only {
+    display: block;
+  }
+}
+
+@media (min-width: 641px) {
+  .ad-mobile-only {
+    display: none;
+  }
+  .ad-leaderboard {
+    display: block;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Breaking news pulse animation */
+@keyframes pulseRed {
+  0%, 100% { background-color: #CC0000; }
+  50% { background-color: #ff1a1a; }
+}
+
+.pulse-red {
+  animation: pulseRed 1.5s ease-in-out infinite;
+}
+
+/* Mobile menu animation */
+.mobile-menu {
+  transition: all 0.3s ease-in-out;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.mobile-menu.open {
+  max-height: 600px;
+}
+
+/* Focus styles for accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .no-print { display: none; }
+}
+
+/* Custom selection color */
+::selection {
+  background: rgba(204, 0, 0, 0.2);
+  color: #1a1a1a;
+}
