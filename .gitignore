@@ -18,6 +18,13 @@ dist/
 .env.test.local
 .env.production.local
 
+# Admin data - DO NOT overwrite on deploy (server-side only)
+data/admin-posts.json
+data/admin-breaking.json
+data/admin-media.json
+data/admin-config.json
+data/admin-users.json
+
 # Debug
 npm-debug.log*
 yarn-debug.log*
@@ -34,16 +41,6 @@ Thumbs.db
 *.swp
 *.swo
 
-# Vercel / Hostinger
-.vercel
-.hostinger
-
 # Cache
 .cache/
 *.log
-
-# Admin data - server only, don't overwrite on deploy
-data/admin-posts.json
-data/admin-breaking.json
-data/admin-media.json
-data/admin-config.json
